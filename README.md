@@ -1,7 +1,7 @@
 
 # Linear Regression Module 
 
-For a user-guide of the module, click [here](http://http://daverosenman.com/linear-regression-user-guide.html)
+To view the module's user guide, click [here](http://http://daverosenman.com/linear-regression-user-guide.html)
 
 
 **lr.summary_stats(x, y, through_origin=False)** 
