@@ -9,17 +9,7 @@ To view the module's user guide, click [here](http://http://daverosenman.com/lin
 >**parameters**: x,y, (optional) through_origin <br>
 x and y must be two sets of measurements of equal length. To force the regression line to through through the origin, include the third parameter as through_origin = True.
 
->**returns:**  
-    
->>**slope** of regression line 
-    
->>**intercept** of regression line
-    
->>**standard error of slope** of regression line
-    
->>**standard error of intercept** of regression line
-    
->>**correlation coefficient (a.k.a. r)** 
+>**returns:**  **slope** of regression line ,**intercept** of regression line, **standard error of slope** of regression line,**standard error of intercept** of regression line, and the **correlation coefficient (a.k.a. r)** 
 
 
 **lr.print_summary_stats(x, y, through_origin=False)**
