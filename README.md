@@ -11,15 +11,15 @@ x and y must be two sets of measurements of equal length. To force the regressio
 
 >**returns:**  
     
-    >>**slope** of regression line 
+>>**slope** of regression line 
     
-    >>**intercept** of regression line
+>>**intercept** of regression line
     
-    >>**standard error of slope** of regression line
+>>**standard error of slope** of regression line
     
-    >>**standard error of intercept** of regression line
+>>**standard error of intercept** of regression line
     
-    >>**correlation coefficient (a.k.a. r)** 
+>>**correlation coefficient (a.k.a. r)** 
 
 
 **lr.print_summary_stats(x, y, through_origin=False)**
