@@ -1,6 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed May 10 10:16:45 2017
+
+@author: Dave Rosenman
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+
 
 def slope(x,y,through_origin = False):
     x = np.array(x)
@@ -84,6 +92,17 @@ def r(x,y):
 def r_squared(x,y):
     return (correlation_coefficient(x,y))**2
 
-    
+import scipy.stats as stats
 
-
+def p_value(x,y,through_origin = False):
+    x = np.array(x)
+    y = np.array(y)
+    if through_origin == True:
+        k = 1
+    else: 
+        k = 2
+    df = len(x) - k
+    m = slope(x,y,through_origin)
+    error = slope_error(x,y,through_origin)
+    t = m/error
+    return stats.t.sf(np.abs(t), df)*2
