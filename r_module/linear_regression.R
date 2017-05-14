@@ -44,13 +44,56 @@ intercept_error <- function(x,y,through_origin = FALSE) {
   }
 }
 
-r <- function(x,y) {
-  n <- length(x)
-  return_r<- (n*sum(x*y)-sum(x)*sum(y))/(sqrt(n*sum(x^2) - sum(x)^2) * sqrt(n*sum(y^2) - sum(y)^2))
-  return_r
+r <- function(x,y,through_origin = FALSE) {
+    if (through_origin == FALSE){
+        n <- length(x)
+        return_r<- (n*sum(x*y)-sum(x)*sum(y))/(sqrt(n*sum(x^2) - sum(x)^2) * sqrt(n*sum(y^2) - sum(y)^2))
+        return_r      
+    }
+    else{
+        return_r <- sqrt(1 - sum((y-slope(x,y,through_origin)*x)^2)/sum(y^2))
+        return_r
+    }
+  
 }
 
-r_squared <- function(x,y) {
-  return_r_squared <- (r(x,y))^2
+r_squared <- function(x,y,through_origin= FALSE) {
+  return_r_squared <- (r(x,y,through_origin))^2
   return_r_squared
 }
+
+summary_stats <- function(x,y,through_origin = FALSE) {
+  return_values <- list(slope = slope(x,y,through_origin),intercept = intercept(x,y,through_origin),
+                        slope_error = slope_error(x,y,through_origin),
+                              intercept_error = intercept_error(x,y,through_origin),r = r(x,y,through_origin))
+  return_values
+}
+
+summary_stats_df <- function(x,y,both = FALSE,through_origin = FALSE) {
+  if(both == TRUE) {
+    row_names = c('Summary Stats: Regular Linear Regression', 'Summary Stats: Regression Line Through (0,0)')
+    df <- data.frame(slope = c(slope(x,y,through_origin=FALSE),slope(x,y,through_origin = TRUE)),
+                     intercept = c(intercept(x,y,through_origin = FALSE), 0.0),
+                     slope_error = c(slope_error(x,y,through_origin= FALSE), slope_error(x,y,through_origin = TRUE)),
+                     intercept_error = c(intercept_error(x,y,through_origin = FALSE),intercept_error(x,y,through_origin = TRUE)),
+                     r = c(r(x,y),r(x,y,through_origin = TRUE)), row.names = row_names)
+  }
+  
+  else {
+    if(through_origin == FALSE) {
+      row_names = c('Summary Stats: Linear Regression')
+    }
+    else {
+      row_names = c('Summary Stats: Regression Line Through (0,0)')
+    }
+      
+      df <- data.frame(slope = c(slope(x,y,through_origin)),
+                       intercept = c(intercept(x,y,through_origin)),
+                       slope_error = c(slope_error(x,y,through_origin)),
+                       intercept_error = c(intercept_error(x,y,through_origin)),
+                       r = c(r(x,y)), row.names = row_names)
+      
+  }
+  df
+  }
+    
