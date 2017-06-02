@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed May 10 10:16:45 2017
-
-@author: Dave Rosenman
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -53,14 +46,14 @@ def intercept_error(x,y,through_origin = False):
     else:
         return 'NaN'
 
-def summary_stats(x,y,through_origin = False):
+def results(x,y,through_origin = False):
     return (slope(x,y,through_origin),intercept(x,y,through_origin),
             slope_error(x,y,through_origin),intercept_error(x,y,through_origin),
                        correlation_coefficient(x,y))
 
 
  
-def print_summary_stats(x,y,through_origin = False):
+def print_results(x,y,through_origin = False):
     if through_origin == False:
         print(pd.DataFrame([[slope(x,y),intercept(x,y),slope_error(x,y)]], 
                             columns = ['Slope', 'Intercept','Std. Error, Slope'],
