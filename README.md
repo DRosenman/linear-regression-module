@@ -20,7 +20,7 @@ x and y must be two sets of measurements of equal length. To force the regressio
 >**prints:** slope of regression line, intercept of regression line, standard error of slope of regression line, standard error of intercept of regression line, and correlation coefficient (a.k.a. r).
 
 
-### Individual Linear Regression Coefficients
+### Individual Linear Regression Parameters
 **lr.slope(x, y, through_origin=False)**
 
 >**parameters**: x,y, (optional) through_origin <br>
@@ -47,14 +47,14 @@ x and y must be two sets of measurements of equal length.
 
 >**returns:** The standard error of the intercept
 
-**lr.r(x,y)**
->**parameters**: x,y <br>
+**lr.r(x,y,through_origin = False)**
+>**parameters**: x,y, (optional) through_origin <br>
 x and y must be two sets of measurements of equal length.
 
 >**returns:** The correlation coefficient, a.k.a. r
 
-**lr.r_squared(x,y):**
->**parameters**: x,y <br>
+**lr.r_squared(x,y, through_origin = False):**
+>**parameters**: x,y, (optional) through_origin <br>
 x and y must be two sets of measurements of equal length.
 
 >**returns:** The coefficient of determination, a.k.a. $r^2$
